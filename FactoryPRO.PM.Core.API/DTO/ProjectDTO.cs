@@ -42,6 +42,6 @@ namespace FactoryPRO.PM.Core.API.DTO
         public virtual SpaceDTO Space { get; set; }
 
         public virtual CustomFieldsDTO customFieldsDTO { get; set; }
-        public List<ListDTO> listDTO { get; set; }
+        public virtual List<ListDTO> listDTO { get; set; }
     }
 }
