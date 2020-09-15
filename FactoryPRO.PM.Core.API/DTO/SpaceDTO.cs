@@ -11,5 +11,6 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string SpaceName { get; set; }
         public long? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
+        public string ModuleID { get; set; }
     }
 }

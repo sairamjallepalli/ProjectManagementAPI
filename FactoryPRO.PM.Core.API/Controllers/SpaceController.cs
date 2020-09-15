@@ -54,7 +54,8 @@ namespace FactoryPRO.PM.Core.API.Controllers
             {
                 return new APIResponse
                 {
-                    returnCode = -1
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
                 };
             }
         }
@@ -80,7 +81,8 @@ namespace FactoryPRO.PM.Core.API.Controllers
             {
                 return new APIResponse
                 {
-                    returnCode = -1
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
                 };
             }
         }
@@ -107,7 +109,8 @@ namespace FactoryPRO.PM.Core.API.Controllers
             {
                 return new APIResponse
                 {
-                    returnCode = -1
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
                 };
             }
         }
@@ -119,17 +122,25 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/Spaces/CreateSpace")]
-        public bool CreateSpace(SpaceDTO space)
+        public APIResponse CreateSpace(SpaceDTO space)
         {
             try
             {
-                return _spaceService.CreateSpace(space);
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _spaceService.CreateSpace(space)
+                };
             }
             catch (Exception ex)
             {
-                //log
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
             }
-            return false;
         }
 
         /// <summary>
@@ -139,17 +150,25 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Spaces/UpdateSpace")]
         [HttpPost]
-        public bool UpdateSpace(SpaceDTO space)
+        public APIResponse UpdateSpace(SpaceDTO space)
         {
             try
             {
-                return _spaceService.UpdateSpace(space);
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _spaceService.UpdateSpace(space)
+                };
             }
             catch (Exception ex)
             {
-                //log
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
             }
-            return false;
         }
 
         /// <summary>
@@ -167,9 +186,9 @@ namespace FactoryPRO.PM.Core.API.Controllers
             }
             catch (Exception ex)
             {
-                //log
+                return false;
             }
-            return false;
+            
         }
 
     }

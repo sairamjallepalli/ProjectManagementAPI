@@ -36,15 +36,15 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="fullProject"></param>
         /// <returns></returns>
-        public bool CreateProject(FullProjectDTO fullProject)
+        public ProjectDTO CreateProject(FullProjectDTO fullProject)
         {
-            var result = false;
             TblProjects projects = _mapper.Map<TblProjects>(fullProject.projectDTO);
 
-          //  TblCustomFields customFileds = _mapper.Map<TblCustomFields>(fullProject.customFieldsDTO);
             List<TblCustomFields> customFields = CastObject<CustomFieldsDTO, TblCustomFields>(fullProject.customFieldsDTO);
-            result = _projectRepository.CreateProject(projects, customFields);
-            return result;
+            projects = _projectRepository.CreateProject(projects, customFields);
+            ProjectDTO projectdto = _mapper.Map<ProjectDTO>(projects);
+
+            return projectdto;
         }
 
         /// <summary>
@@ -163,13 +163,15 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="Project"></param>
         /// <returns></returns>
-        public bool UpdateProject(FullProjectDTO fullProject)
+        public ProjectDTO UpdateProject(FullProjectDTO fullProject)
         {
             var result = false;
             TblProjects projects = _mapper.Map<TblProjects>(fullProject.projectDTO);
             TblCustomFields customFields = _mapper.Map<TblCustomFields>(fullProject.customFieldsDTO);
-            result = _projectRepository.UpdateProject(projects,customFields);
-            return result;
+            projects = _projectRepository.UpdateProject(projects,customFields);
+            ProjectDTO projectdto = _mapper.Map<ProjectDTO>(projects);
+            return projectdto;
+
         }
 
     }

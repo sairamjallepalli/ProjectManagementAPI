@@ -11,8 +11,8 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         List<TblTasks> GetTasksByUserID(int UserID);
         List<TblTasks> GetTasksByList(string ListID);
         List<TblTasks> GetTasksByProject(string ProjectID);
-        bool CreateTask(TblTasks task);
-        bool UpdateTask(TblTasks Task);
+        TblTasks CreateTask(TblTasks task);
+        TblTasks UpdateTask(TblTasks Task);
         bool DeleteTask(TblTasks task);
     }
 }

@@ -16,18 +16,11 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         {
             _projectContext = projectContext;
         }
-        public bool CreateSpace(TblSpace Space)
+        public TblSpace CreateSpace(TblSpace Space)
         {
-            try
-            {
-                _projectContext.TblSpace.Add(Space);
-                _projectContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                //log
-            }
-            return true;
+            _projectContext.TblSpace.Add(Space);
+            _projectContext.SaveChanges();
+            return Space;
         }
 
         public bool DeleteSpace(TblSpace Space)
@@ -70,24 +63,17 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             return spaces;
         }
 
-        public bool UpdateSpace(TblSpace Space)
+        public TblSpace UpdateSpace(TblSpace Space)
         {
             var _spaceobj = _projectContext.TblSpace.Where(m => m.SpaceId == Space.SpaceId).FirstOrDefault();
-            try
+            if (_spaceobj != null)
             {
-                if (_spaceobj != null)
-                {
-                    _spaceobj.SpaceName = Space.SpaceName;
-                    _projectContext.Update(_spaceobj).Property(x => x.Sid).IsModified = false;
-                    //_projectContext.Entry(_spaceobj).State = EntityState.Modified;
-                    _projectContext.SaveChanges();
-                }
+                _spaceobj.SpaceName = Space.SpaceName;
+                _projectContext.Update(_spaceobj).Property(x => x.Sid).IsModified = false;
+                //_projectContext.Entry(_spaceobj).State = EntityState.Modified;
+                _projectContext.SaveChanges();
             }
-            catch (Exception ex)
-            {
-                //log
-            }
-            return true;
+            return Space;
 
         }
     }

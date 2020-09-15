@@ -13,9 +13,9 @@ namespace FactoryPRO.PM.Core.DAL.Repository
 
         TblSpace GetSpaceByID(string SpaceID);
 
-        bool CreateSpace(TblSpace Space);
+        TblSpace CreateSpace(TblSpace Space);
 
-        bool UpdateSpace(TblSpace Space);
+        TblSpace UpdateSpace(TblSpace Space);
 
         bool DeleteSpace(TblSpace Space);
     }

@@ -35,12 +35,24 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpGet]
         public APIResponse GetTilesCount(int UserID, string ModuleID)
         {
-            return new APIResponse
+            try
             {
-                returnCode = 0,
-                returnMessage = "Success",
-                returnObject = _tilesService.GetTilesCount(UserID, ModuleID)
-            };
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _tilesService.GetTilesCount(UserID, ModuleID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
+
         }
     }
 

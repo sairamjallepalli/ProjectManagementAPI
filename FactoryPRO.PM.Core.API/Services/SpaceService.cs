@@ -41,10 +41,14 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="Space"></param>
         /// <returns></returns>
-        public bool CreateSpace(SpaceDTO Space)
+        public SpaceDTO CreateSpace(SpaceDTO Space)
         {
             TblSpace space = _mapper.Map<TblSpace>(Space);
-            return _spaceRepository.CreateSpace(space);
+            space.SpaceId = Guid.NewGuid().ToString();
+            space =  _spaceRepository.CreateSpace(space);
+
+            SpaceDTO spacedto = _mapper.Map<SpaceDTO>(space);
+            return spacedto;
         }
 
         /// <summary>
@@ -151,10 +155,14 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="Space"></param>
         /// <returns></returns>
-        public bool UpdateSpace(SpaceDTO Space)
+        public SpaceDTO UpdateSpace(SpaceDTO Space)
         {
             TblSpace space = _mapper.Map<TblSpace>(Space);
-            return _spaceRepository.UpdateSpace(space);
+            space =  _spaceRepository.UpdateSpace(space);
+
+            SpaceDTO spacedto = new SpaceDTO();
+            spacedto = _mapper.Map<SpaceDTO>(space);
+            return spacedto;
         }
     }
 }

@@ -34,12 +34,23 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpGet]
         public APIResponse GetTasksByUserID(int UserID)
         {
-            return new APIResponse
+            try
             {
-                returnCode = 0,
-                returnMessage = "Success",
-                returnObject = _taskService.GetTasksByUserID(UserID)
-            };
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _taskService.GetTasksByUserID(UserID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
@@ -50,12 +61,24 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpGet]
         public APIResponse GetTasksByList(string ListID)
         {
-            return new APIResponse
+
+            try
             {
-                returnCode = 0,
-                returnMessage = "Success",
-                returnObject = _taskService.GetTasksByList(ListID)
-            };
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _taskService.GetTasksByList(ListID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
@@ -66,12 +89,24 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpGet]
         public APIResponse GetTasksByProject(string ProjectID)
         {
-            return new APIResponse
+
+            try
             {
-                returnCode = 0,
-                returnMessage = "Success",
-                returnObject = _taskService.GetTasksByProject(ProjectID)
-            };
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _taskService.GetTasksByProject(ProjectID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
@@ -82,10 +117,26 @@ namespace FactoryPRO.PM.Core.API.Controllers
        
         [Route("api/Tasks/CreateTask")]
         [HttpPost]
-        public bool CreateTask(TaskDTO Task)
+        public APIResponse CreateTask(TaskDTO Task)
         {
             Task.CreatedDate = DateTime.UtcNow;
-            return _taskService.CreateTask(Task);
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _taskService.CreateTask(Task)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
@@ -95,10 +146,27 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Tasks/UpdateTask")]
         [HttpPost]
-        public bool UpdateTask(TaskDTO Task)
+        public APIResponse UpdateTask(TaskDTO Task)
         {
             Task.UpdatedDate = DateTime.UtcNow;
-            return _taskService.UpdateTask(Task);
+
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _taskService.UpdateTask(Task)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
