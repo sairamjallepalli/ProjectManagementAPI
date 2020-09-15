@@ -15,7 +15,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         {
             _projectContext = projectContext;
         }
-        public bool CreateProject(TblProjects projects, List< TblCustomFields> customFields)
+        public TblProjects CreateProject(TblProjects projects, List< TblCustomFields> customFields)
         {
             _projectContext.TblProjects.Add(projects);
             foreach(TblCustomFields customfield in customFields)
@@ -25,7 +25,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             }
           
             _projectContext.SaveChanges();
-            return true;
+            return projects;
         }
 
         public bool DeleteProject(TblProjects Projects)
@@ -107,7 +107,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             return projects;
         }
 
-        public bool UpdateProject(TblProjects Projects,TblCustomFields customFields)
+        public TblProjects UpdateProject(TblProjects Projects,TblCustomFields customFields)
         {
             var _projectobj = _projectContext.TblProjects.SingleOrDefault(m => m.ProjectId == Projects.ProjectId);
             var _customobj = _projectContext.TblCustomFields.SingleOrDefault(m => m.ProjectId == Projects.ProjectId);
@@ -146,7 +146,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
                 _projectContext.Update(_customobj).Property(x => x.Cid).IsModified = false;
                 _projectContext.SaveChanges();
             }
-                return true;
+                return Projects;
         }
     }
 }

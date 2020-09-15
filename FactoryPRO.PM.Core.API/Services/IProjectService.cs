@@ -23,9 +23,9 @@ namespace FactoryPRO.PM.Core.API.Services
         List<ProjectDTO> GetProjectsByUserID(long UserID, string ModuleID);
 
         List<CustomFieldsDTO> GetCustomFieldsByProject(string ProjectID);
-        bool CreateProject(FullProjectDTO fullProject);
+        ProjectDTO CreateProject(FullProjectDTO fullProject);
 
-        bool UpdateProject(FullProjectDTO fullProject);
+        ProjectDTO UpdateProject(FullProjectDTO fullProject);
 
         bool DeleteProject(ProjectDTO Project);
     }

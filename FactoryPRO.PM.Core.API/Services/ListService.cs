@@ -34,12 +34,12 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="Lists"></param>
         /// <returns></returns>
-        public bool CreateList(ListDTO Lists)
+        public ListDTO CreateList(ListDTO Lists)
         {
-            var result = false;
             TblList list = _mapper.Map<TblList>(Lists);
-            result = _listRepository.CreateList(list);
-            return result;
+            list = _listRepository.CreateList(list);
+            ListDTO listdto = _mapper.Map<ListDTO>(list);
+            return listdto;
         }
 
         /// <summary>
@@ -90,12 +90,13 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="Lists"></param>
         /// <returns></returns>
-        public bool UpdateList(ListDTO Lists)
+        public ListDTO UpdateList(ListDTO Lists)
         {
-            var result = false;
             TblList list = _mapper.Map<TblList>(Lists);
-            result = _listRepository.UpdateList(list);
-            return result;
+            list = _listRepository.UpdateList(list);
+
+            ListDTO listdto = _mapper.Map<ListDTO>(list);
+            return listdto;
         }
     }
 }

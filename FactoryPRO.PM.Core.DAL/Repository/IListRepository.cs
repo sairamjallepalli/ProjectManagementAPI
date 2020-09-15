@@ -14,9 +14,9 @@ namespace FactoryPRO.PM.Core.DAL.Repository
 
         TblList GetListByID(string ListID,string ProjectID);
 
-        bool CreateList(TblList Lists);
+        TblList CreateList(TblList Lists);
 
-        bool UpdateList(TblList Lists);
+        TblList UpdateList(TblList Lists);
 
         bool DeleteList(TblList Lists);
     }

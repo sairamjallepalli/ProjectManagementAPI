@@ -14,9 +14,9 @@ namespace FactoryPRO.PM.Core.API.Services
 
         SpaceDTO GetSpaceByID(string SpaceID);
 
-        bool CreateSpace(SpaceDTO Space);
+        SpaceDTO CreateSpace(SpaceDTO Space);
 
-        bool UpdateSpace(SpaceDTO Space);
+        SpaceDTO UpdateSpace(SpaceDTO Space);
 
         bool DeleteSpace(SpaceDTO Space);
 

@@ -78,14 +78,14 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
-        public bool CreateTask(TblTasks task)
+        public TblTasks CreateTask(TblTasks task)
         {
             _projectContext.TblTasks.Add(task);
             _projectContext.SaveChanges();
-            return true;
+            return task;
         }
 
-        public bool UpdateTask(TblTasks task)
+        public TblTasks UpdateTask(TblTasks task)
         {
             var _taskobj = _projectContext.TblTasks.Where(m => m.TaskId == task.TaskId && m.ProjectId == task.ProjectId).FirstOrDefault();
 
@@ -109,7 +109,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
                 _projectContext.SaveChanges();
 
             }
-            return true;
+            return task;
         }
 
         public bool DeleteTask(TblTasks task)

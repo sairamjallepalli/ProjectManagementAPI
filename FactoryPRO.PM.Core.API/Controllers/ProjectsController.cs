@@ -38,12 +38,23 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpGet]
         public APIResponse GetProjects(string ModuleID)
         {
-            return new APIResponse
+            try
             {
-                returnCode = 0,
-                returnMessage = "Success",
-                returnObject = _projectService.GetProjects(ModuleID)
-            };
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _projectService.GetProjects(ModuleID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
 
@@ -57,12 +68,23 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpGet]
         public APIResponse GetProjectsBySpaceID(string ModuleID,string SpaceID)
         {
-            return new APIResponse
+            try
             {
-                returnCode = 0,
-                returnMessage = "Success",
-                returnObject = _projectService.GetProjectsBySpaceID(ModuleID,SpaceID)
-            };
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _projectService.GetProjectsBySpaceID(ModuleID, SpaceID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
@@ -73,9 +95,26 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Projects/GetProjectByID")]
         [HttpGet]
-        public ProjectDTO GetProjectByID(string ProjectID,string ModuleID)
+        public APIResponse GetProjectByID(string ProjectID,string ModuleID)
         {
-            return _projectService.GetProjectByID(ProjectID,ModuleID);
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _projectService.GetProjectByID(ProjectID, ModuleID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
+
         }
 
         /// <summary>
@@ -86,9 +125,25 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Projects/GetCustomFieldsByProject")]
         [HttpGet]
-        public List<CustomFieldsDTO> GetCustomFieldsByProject(string ProjectID)
+        public APIResponse GetCustomFieldsByProject(string ProjectID)
         {
-            return _projectService.GetCustomFieldsByProject(ProjectID);
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _projectService.GetCustomFieldsByProject(ProjectID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
@@ -101,12 +156,23 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpGet]
         public APIResponse GetProjectsByUserID(long UserID, string ModuleID)
         {
-            return new APIResponse
+            try
             {
-                returnCode = 0,
-                returnMessage = "Success",
-                returnObject = _projectService.GetProjectsByUserID(UserID, ModuleID)
-            };
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _projectService.GetProjectsByUserID(UserID, ModuleID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
@@ -117,10 +183,26 @@ namespace FactoryPRO.PM.Core.API.Controllers
       
         [Route("api/Projects/CreateProject")]
         [HttpPost]
-        public bool CreateProject(FullProjectDTO project)
+        public APIResponse CreateProject(FullProjectDTO project)
         {
             project.projectDTO.CreatedDate = DateTime.UtcNow;
-             return _projectService.CreateProject(project);
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _projectService.CreateProject(project)
+            };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
        /// <summary>
@@ -130,10 +212,28 @@ namespace FactoryPRO.PM.Core.API.Controllers
        /// <returns></returns>
         [Route("api/Projects/UpdateProject")]
         [HttpPost]
-        public bool UpdateProject(FullProjectDTO project)
+        public APIResponse UpdateProject(FullProjectDTO project)
         {
             project.projectDTO.UpdatedDate = DateTime.UtcNow;
-            return _projectService.UpdateProject(project);
+
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _projectService.UpdateProject(project)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
+
         }
 
        /// <summary>

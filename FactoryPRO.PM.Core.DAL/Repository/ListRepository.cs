@@ -18,11 +18,11 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             _projectContext = projectContext;
         }
 
-        public bool CreateList(TblList List)
+        public TblList CreateList(TblList List)
         {
             _projectContext.TblList.Add(List);
             _projectContext.SaveChanges();
-            return true;
+            return List;
         }
 
         public bool DeleteList(TblList Lists)
@@ -39,18 +39,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
 
         public List<TblList> GetList(string ProjectID)
         {
-            List<TblList> lists = new List<TblList>();
-            try
-            {
-                lists = _projectContext.TblList.Where(m => m.ProjectId == ProjectID ).ToList();
-            }
-            catch (Exception ex)
-            {
-                //log
-            }
-            return lists;
-
-           
+            return _projectContext.TblList.Where(m => m.ProjectId == ProjectID ).ToList();
         }
 
         public TblList GetListByID(string ListID,string ProjectID)
@@ -58,28 +47,28 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             return _projectContext.TblList.Where(m => m.ListId == ListID && m.ProjectId == ProjectID).FirstOrDefault();
         }
 
-        public bool UpdateList(TblList Lists)
+        public TblList UpdateList(TblList list)
         {
-            var _Projectobj = _projectContext.TblList.Where(m => m.ListId == Lists.ListId && m.ProjectId ==Lists.ProjectId).FirstOrDefault();
+            var _Projectobj = _projectContext.TblList.Where(m => m.ListId == list.ListId && m.ProjectId ==list.ProjectId).FirstOrDefault();
 
             if (_Projectobj != null)
             {
-                _Projectobj.ListName = Lists.ListName;
-                _Projectobj.ListId = Lists.ListId;
-                _Projectobj.ProjectId = Lists.ProjectId;
-                _Projectobj.ModuleId = Lists.ModuleId;
+                _Projectobj.ListName = list.ListName;
+                _Projectobj.ListId = list.ListId;
+                _Projectobj.ProjectId = list.ProjectId;
+                _Projectobj.ModuleId = list.ModuleId;
 
-                _Projectobj.ListOwnerId = Lists.ListOwnerId;
-                _Projectobj.ListStatus = Lists.ListStatus;
-                _Projectobj.Active = Lists.Active;
-                _Projectobj.UpdatedBy = Lists.UpdatedBy;
-                _Projectobj.UpdatedDate = Lists.UpdatedDate;
+                _Projectobj.ListOwnerId = list.ListOwnerId;
+                _Projectobj.ListStatus = list.ListStatus;
+                _Projectobj.Active = list.Active;
+                _Projectobj.UpdatedBy = list.UpdatedBy;
+                _Projectobj.UpdatedDate = list.UpdatedDate;
 
 
                 _projectContext.Update(_Projectobj).Property(x => x.Lid).IsModified = false;
                 _projectContext.SaveChanges();
             }
-            return true;
+            return list;
         }
     }
 }

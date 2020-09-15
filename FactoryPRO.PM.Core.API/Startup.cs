@@ -64,7 +64,18 @@ namespace SolSem.PLM.Core.API
 
             services.AddAutoMapper(typeof(Startup));
            services.AddDbContext<ProjectContext>(item => item.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-            services.AddCors();
+           services.AddCors();
+
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("foo",
+            //    builder =>
+            //    {
+            //        // Not a permanent solution, but just trying to isolate the problem
+            //        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            //    });
+            //});
+
             //services.AddSwaggerGen(c =>
             //{
             //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProjectServices", Version = "v1", });
@@ -117,7 +128,10 @@ namespace SolSem.PLM.Core.API
           //  app.UseSerilogRequestLogging();
 
             app.UseAuthorization();
-            app.UseCors(opt => opt.AllowAnyOrigin());
+
+            app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            //app.UseCors("foo");
+
             //app.UseSwagger();
             //app.UseSwaggerUI(c =>
             //{

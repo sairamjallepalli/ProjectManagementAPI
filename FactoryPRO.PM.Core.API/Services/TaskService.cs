@@ -87,12 +87,13 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="Task"></param>
         /// <returns></returns>
-        public bool CreateTask(TaskDTO Task)
+        public TaskDTO CreateTask(TaskDTO Task)
         {
-            var result = false;
             TblTasks task = _mapper.Map<TblTasks>(Task);
-            result = _taskRepository.CreateTask(task);
-            return result;
+            task = _taskRepository.CreateTask(task);
+            TaskDTO Taskdto = new TaskDTO();
+            Taskdto = _mapper.Map<TaskDTO>(task);
+            return Taskdto;
         }
 
         /// <summary>
@@ -100,12 +101,14 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="Task"></param>
         /// <returns></returns>
-        public bool UpdateTask(TaskDTO Task)
+        public TaskDTO UpdateTask(TaskDTO Task)
         {
-            var result = false;
             TblTasks task = _mapper.Map<TblTasks>(Task);
-            result = _taskRepository.UpdateTask(task);
-            return result;
+            task = _taskRepository.UpdateTask(task);
+
+            TaskDTO Taskdto = new TaskDTO();
+            Taskdto = _mapper.Map<TaskDTO>(task);
+            return Taskdto;
         }
 
         /// <summary>

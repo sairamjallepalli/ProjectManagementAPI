@@ -36,12 +36,23 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpGet]
         public APIResponse GetList(string ProjectID)
         {
-            return new APIResponse
+            try
             {
-                returnCode = 0,
-                returnMessage = "Success",
-                returnObject = _listtService.GetList(ProjectID)
-            };
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _listtService.GetList(ProjectID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
      /// <summary>
@@ -52,9 +63,25 @@ namespace FactoryPRO.PM.Core.API.Controllers
      /// <returns></returns>
         [Route("api/Lists/GetListByID")]
         [HttpGet]
-        public ListDTO GetListByID(string ListID,string ProjectID)
+        public APIResponse GetListByID(string ListID,string ProjectID)
         {
-            return _listtService.GetListByID(ListID, ProjectID);
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _listtService.GetListByID(ListID, ProjectID)
+            };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
@@ -65,10 +92,28 @@ namespace FactoryPRO.PM.Core.API.Controllers
       
         [Route("api/Lists/CreateList")]
         [HttpPost]
-        public bool CreateList(ListDTO lists)
+        public APIResponse CreateList(ListDTO lists)
         {
             lists.CreatedDate = DateTime.UtcNow;
-            return _listtService.CreateList(lists);
+
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _listtService.CreateList(lists)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
+
         }
 
        /// <summary>
@@ -78,10 +123,26 @@ namespace FactoryPRO.PM.Core.API.Controllers
        /// <returns></returns>
         [Route("api/Lists/UpdateList")]
         [HttpPost]
-        public bool UpdateList(ListDTO lists)
+        public APIResponse UpdateList(ListDTO lists)
         {
             lists.UpdatedDate  = DateTime.UtcNow;
-            return _listtService.UpdateList(lists);
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _listtService.UpdateList(lists)
+            };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
         }
 
         /// <summary>
