@@ -32,7 +32,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Tasks/GetTasksByUserID")]
         [HttpGet]
-        public APIResponse GetTasksByUserID(int UserID)
+        public APIResponse GetTasksByUserID(string  UserGUID)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _taskService.GetTasksByUserID(UserID)
+                    returnObject = _taskService.GetTasksByUserID(UserGUID)
                 };
             }
             catch (Exception ex)

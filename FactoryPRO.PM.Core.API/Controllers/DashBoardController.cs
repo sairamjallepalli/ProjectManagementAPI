@@ -28,12 +28,12 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="UserID"></param>
         /// <param name="ModuleID"></param>
+        /// <param name="UserGUID"></param>
         /// <returns></returns>
         [Route("api/Tiles/GetTilesCount")]
         [HttpGet]
-        public APIResponse GetTilesCount(int UserID, string ModuleID)
+        public APIResponse GetTilesCount(string ModuleID, String UserGUID)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _tilesService.GetTilesCount(UserID, ModuleID)
+                    returnObject = _tilesService.GetTilesCount( ModuleID,UserGUID)
                 };
             }
             catch (Exception ex)

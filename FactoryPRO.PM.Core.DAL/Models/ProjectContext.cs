@@ -56,7 +56,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
                 entity.HasOne(d => d.Task)
                     .WithMany()
                     .HasForeignKey(d => d.TaskId)
-                    .HasConstraintName("FK__tblCheckL__TaskI__56E8E7AB");
+                    .HasConstraintName("FK__tblCheckL__TaskI__47DBAE45");
             });
 
             modelBuilder.Entity<TblCustomFields>(entity =>
@@ -69,7 +69,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
                 entity.Property(e => e.Cid).HasColumnName("CID");
 
                 entity.Property(e => e.CreatedBy)
-                    .HasMaxLength(100)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
@@ -102,7 +102,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .WithMany(p => p.TblCustomFields)
                     .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__tblCustom__Proje__671F4F74");
+                    .HasConstraintName("FK__tblCustom__Proje__48CFD27E");
             });
 
             modelBuilder.Entity<TblDocuments>(entity =>
@@ -110,6 +110,10 @@ namespace FactoryPRO.PM.Core.DAL.Models
                 entity.HasNoKey();
 
                 entity.ToTable("tblDocuments");
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
@@ -132,7 +136,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
                 entity.HasOne(d => d.Task)
                     .WithMany()
                     .HasForeignKey(d => d.TaskId)
-                    .HasConstraintName("FK__tblDocume__TaskI__58D1301D");
+                    .HasConstraintName("FK__tblDocume__TaskI__49C3F6B7");
             });
 
             modelBuilder.Entity<TblList>(entity =>
@@ -149,6 +153,10 @@ namespace FactoryPRO.PM.Core.DAL.Models
 
                 entity.Property(e => e.Active)
                     .HasMaxLength(1)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
@@ -175,12 +183,16 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.UpdatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.TblList)
                     .HasForeignKey(d => d.ProjectId)
-                    .HasConstraintName("FK__tblList__Project__489AC854");
+                    .HasConstraintName("FK__tblList__Project__4AB81AF0");
             });
 
             modelBuilder.Entity<TblProjects>(entity =>
@@ -196,6 +208,10 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.ActualDate).HasColumnType("datetime");
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
@@ -244,12 +260,16 @@ namespace FactoryPRO.PM.Core.DAL.Models
 
                 entity.Property(e => e.TargetDate).HasColumnType("datetime");
 
+                entity.Property(e => e.UpdatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Space)
                     .WithMany(p => p.TblProjects)
                     .HasForeignKey(d => d.SpaceId)
-                    .HasConstraintName("FK__tblProjec__Space__45BE5BA9");
+                    .HasConstraintName("FK__tblProjec__Space__4BAC3F29");
             });
 
             modelBuilder.Entity<TblSpace>(entity =>
@@ -262,6 +282,10 @@ namespace FactoryPRO.PM.Core.DAL.Models
                 entity.Property(e => e.SpaceId)
                     .HasColumnName("SpaceID")
                     .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
@@ -279,6 +303,12 @@ namespace FactoryPRO.PM.Core.DAL.Models
                 entity.Property(e => e.SpaceName)
                     .IsRequired()
                     .HasMaxLength(250);
+
+                entity.Property(e => e.UpdatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<TblTaskStatus>(entity =>
@@ -288,9 +318,15 @@ namespace FactoryPRO.PM.Core.DAL.Models
 
                 entity.ToTable("tblTaskStatus");
 
-                entity.Property(e => e.TaskStatusId).HasColumnName("TaskStatusID");
+                entity.Property(e => e.TaskStatusId)
+                    .HasColumnName("TaskStatusID")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.TaskStatusName).HasMaxLength(50);
+
+                entity.Property(e => e.Tsid)
+                    .HasColumnName("TSID")
+                    .ValueGeneratedOnAdd();
             });
 
             modelBuilder.Entity<TblTasks>(entity =>
@@ -305,7 +341,15 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Assignee)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.CompletedEfforts).HasColumnType("decimal(10, 2)");
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
@@ -339,22 +383,26 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .HasColumnName("TID")
                     .ValueGeneratedOnAdd();
 
+                entity.Property(e => e.UpdatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.List)
                     .WithMany(p => p.TblTasks)
                     .HasForeignKey(d => d.ListId)
-                    .HasConstraintName("FK__tblTasks__ListID__4D5F7D71");
+                    .HasConstraintName("FK__tblTasks__ListID__4CA06362");
 
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.TblTasks)
                     .HasForeignKey(d => d.ProjectId)
-                    .HasConstraintName("FK__tblTasks__Projec__6166761E");
+                    .HasConstraintName("FK__tblTasks__Projec__4D94879B");
 
                 entity.HasOne(d => d.TaskStatusNavigation)
                     .WithMany(p => p.TblTasks)
                     .HasForeignKey(d => d.TaskStatus)
-                    .HasConstraintName("FK__tblTasks__TaskSt__4F47C5E3");
+                    .HasConstraintName("FK_tblTasks_TaskStatus_4c4d");
             });
 
             modelBuilder.Entity<TblTasksHistory>(entity =>
@@ -367,6 +415,10 @@ namespace FactoryPRO.PM.Core.DAL.Models
                 entity.Property(e => e.Tid).HasColumnName("TID");
 
                 entity.Property(e => e.CompletedEfforts).HasColumnType("decimal(10, 2)");
+
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.CreatedDate).HasColumnType("datetime");
 
@@ -401,17 +453,17 @@ namespace FactoryPRO.PM.Core.DAL.Models
                 entity.HasOne(d => d.List)
                     .WithMany(p => p.TblTasksHistory)
                     .HasForeignKey(d => d.ListId)
-                    .HasConstraintName("FK__tblTasksH__ListI__531856C7");
+                    .HasConstraintName("FK__tblTasksH__ListI__4F7CD00D");
 
                 entity.HasOne(d => d.Task)
                     .WithMany(p => p.TblTasksHistory)
                     .HasForeignKey(d => d.TaskId)
-                    .HasConstraintName("FK__tblTasksH__TaskI__5224328E");
+                    .HasConstraintName("FK__tblTasksH__TaskI__5070F446");
 
                 entity.HasOne(d => d.TaskStatusNavigation)
                     .WithMany(p => p.TblTasksHistory)
                     .HasForeignKey(d => d.TaskStatus)
-                    .HasConstraintName("FK__tblTasksH__TaskS__55009F39");
+                    .HasConstraintName("FK_tblTasksHistory_TaskStatus_4c4d3R");
             });
 
             OnModelCreatingPartial(modelBuilder);

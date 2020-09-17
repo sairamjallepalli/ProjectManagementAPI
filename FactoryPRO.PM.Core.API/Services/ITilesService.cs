@@ -9,6 +9,6 @@ namespace FactoryPRO.PM.Core.API.Services
 {
     public interface ITilesService
     {
-        TilesDTO GetTilesCount(int UserID, string ModuleID);
+        TilesDTO GetTilesCount(string ModuleID,string UserGUID);
     }
 }

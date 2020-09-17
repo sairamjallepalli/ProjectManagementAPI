@@ -9,7 +9,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
 {
   public  interface ISpaceRepository
     {
-        List<TblSpace> GetSpaces(string ModuleID);
+        List<TblSpace> GetSpaces(string ModuleID, string UserGUID);
 
         TblSpace GetSpaceByID(string SpaceID);
 

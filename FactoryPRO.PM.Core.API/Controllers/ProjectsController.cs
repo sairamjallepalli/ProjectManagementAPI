@@ -36,7 +36,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Projects/GetProjects")]
         [HttpGet]
-        public APIResponse GetProjects(string ModuleID)
+        public APIResponse GetProjects(string ModuleID, string UserGUID)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _projectService.GetProjects(ModuleID)
+                    returnObject = _projectService.GetProjects(ModuleID,UserGUID)
                 };
             }
             catch (Exception ex)
@@ -117,15 +117,15 @@ namespace FactoryPRO.PM.Core.API.Controllers
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ProjectID"></param>
-        /// <param name="ModuleID"></param>
-        /// <returns></returns>
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="ProjectID"></param>
+      /// <param name="UserGUID"></param>
+      /// <returns></returns>
         [Route("api/Projects/GetCustomFieldsByProject")]
         [HttpGet]
-        public APIResponse GetCustomFieldsByProject(string ProjectID)
+        public APIResponse GetCustomFieldsByProject(string ProjectID, string UserGUID)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _projectService.GetCustomFieldsByProject(ProjectID)
+                    returnObject = _projectService.GetCustomFieldsByProject(ProjectID,UserGUID)
                 };
             }
             catch (Exception ex)
@@ -154,7 +154,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Projects/GetProjectsByUserID")]
         [HttpGet]
-        public APIResponse GetProjectsByUserID(long UserID, string ModuleID)
+        public APIResponse GetProjectsByUserID( string ModuleID, string UserGUID)
         {
             try
             {
@@ -162,7 +162,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _projectService.GetProjectsByUserID(UserID, ModuleID)
+                    returnObject = _projectService.GetProjectsByUserID(ModuleID,UserGUID)
                 };
             }
             catch (Exception ex)

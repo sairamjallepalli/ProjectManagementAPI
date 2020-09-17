@@ -9,8 +9,8 @@ namespace FactoryPRO.PM.Core.API.Services
 {
   public interface ISpaceService 
     {
-        List<SpaceDTO> GetSpaces(string ModuleID);
-        List<SpaceTreeDTO> GetSpaceTree(string ModuleID);
+        List<SpaceDTO> GetSpaces(string ModuleID, string UserGUID);
+        List<SpaceTreeDTO> GetSpaceTree(string ModuleID, string UserGUID);
 
         SpaceDTO GetSpaceByID(string SpaceID);
 
