@@ -49,6 +49,20 @@ namespace FactoryPRO.PM.Core.API.Services
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="UserID"></param>
+        /// <returns></returns>
+        public TaskDTO GetTasksByID(string TaskID)
+        {
+            TblTasks Task = (TblTasks)_taskRepository.GetTasksByID(TaskID);
+            TaskDTO task = new TaskDTO();
+            task = _mapper.Map<TaskDTO>(Task);
+            return task;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="ListID"></param>
         /// <returns></returns>
         public List<TaskDTO> GetTasksByList(string ListID)
@@ -90,6 +104,7 @@ namespace FactoryPRO.PM.Core.API.Services
         public TaskDTO CreateTask(TaskDTO Task)
         {
             TblTasks task = _mapper.Map<TblTasks>(Task);
+            task.TaskId = Guid.NewGuid().ToString();
             task = _taskRepository.CreateTask(task);
             TaskDTO Taskdto = new TaskDTO();
             Taskdto = _mapper.Map<TaskDTO>(task);

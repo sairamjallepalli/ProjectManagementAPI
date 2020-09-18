@@ -37,6 +37,7 @@ namespace FactoryPRO.PM.Core.API.Services
         public ListDTO CreateList(ListDTO Lists)
         {
             TblList list = _mapper.Map<TblList>(Lists);
+            list.ListId = Guid.NewGuid().ToString();
             list = _listRepository.CreateList(list);
             ListDTO listdto = _mapper.Map<ListDTO>(list);
             return listdto;

@@ -174,6 +174,34 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// </summary>
         /// <param name="Task"></param>
         /// <returns></returns>
+        [Route("api/Tasks/GetTaskByID")]
+        [HttpGet]
+        public APIResponse GetTasksByID(string TaskID)
+        {
+            try
+            {
+                return new APIResponse
+                {
+                    returnCode = 0,
+                    returnMessage = "Success",
+                    returnObject = _taskService.GetTasksByID(TaskID)
+                };
+            }
+            catch (Exception ex)
+            {
+                return new APIResponse
+                {
+                    returnCode = -1,
+                    returnMessage = ex.Message.ToString()
+                };
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Task"></param>
+        /// <returns></returns>
         [Route("api/Tasks/DeleteTask")]
         [HttpGet]
         public bool DeleteTask(TaskDTO Task)
