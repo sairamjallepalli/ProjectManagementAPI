@@ -8,7 +8,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
 {
     public interface ITaskRepository
     {
-        List<TblTasks> GetTasksByUserID(int UserID);
+        List<TblTasks> GetTasksByUserID(string UserID);
         TblTasks GetTasksByID(string TaskID);
         List<TblTasks> GetTasksByList(string ListID);
         List<TblTasks> GetTasksByProject(string ProjectID);
