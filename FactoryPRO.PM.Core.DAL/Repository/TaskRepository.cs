@@ -40,6 +40,25 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
+        public TblTasks GetTasksByID(string TaskID)
+        {
+            TblTasks task = new TblTasks();
+            try
+            {
+                task = _projectContext.TblTasks.Where(m => m.TaskId == TaskID).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                //log
+            }
+            return task;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <returns></returns>
         public List<TblTasks> GetTasksByList(string ListID)
         {
             List<TblTasks> tasks = new List<TblTasks>();

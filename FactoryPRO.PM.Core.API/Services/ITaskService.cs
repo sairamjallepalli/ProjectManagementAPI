@@ -12,6 +12,7 @@ namespace FactoryPRO.PM.Core.API.Services
         List<TaskDTO> GetTasksByUserID(string UserGUID);
         List<TaskDTO> GetTasksByList(string ListID);
         List<TaskDTO> GetTasksByProject(string ProjectID);
+        TaskDTO GetTasksByID(string TaskID);
         TaskDTO CreateTask(TaskDTO Task);
         TaskDTO UpdateTask(TaskDTO Task);
         bool DeleteTask(TaskDTO task);
