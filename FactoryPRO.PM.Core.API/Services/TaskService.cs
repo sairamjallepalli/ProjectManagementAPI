@@ -33,9 +33,9 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        public List<TaskDTO> GetTasksByUserID(int UserID)
+        public List<TaskDTO> GetTasksByUserID(string UserGUID)
         {
-            List<TblTasks> Tasks = (List<TblTasks>)_taskRepository.GetTasksByUserID(UserID);
+            List<TblTasks> Tasks = (List<TblTasks>)_taskRepository.GetTasksByUserID(UserGUID);
             List<TaskDTO> tasks = new List<TaskDTO>();
 
             foreach (TblTasks Task in Tasks)

@@ -30,9 +30,9 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public string Revision { get; set; }
         public string ParentProjectId { get; set; }
         public string IsActive { get; set; }
-        public long? CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public long? UpdatedBy { get; set; }
+        public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
         public virtual TblSpace Space { get; set; }

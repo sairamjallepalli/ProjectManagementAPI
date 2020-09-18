@@ -49,12 +49,12 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             return tblspace;
         }
 
-        public List<TblSpace> GetSpaces(string ModuleID)
+        public List<TblSpace> GetSpaces(string ModuleID, string UserGUID)
         {
             List<TblSpace> spaces = new List<TblSpace>();
             try
             {
-                spaces =  _projectContext.TblSpace.Where(m=>m.ModuleId==ModuleID).ToList();
+                spaces =  _projectContext.TblSpace.Where(m=>m.ModuleId==ModuleID && m.CreatedBy ==UserGUID).ToList();
             }
             catch(Exception ex)
             {

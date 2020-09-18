@@ -8,14 +8,14 @@ namespace FactoryPRO.PM.Core.DAL.Repository
 {
    public  interface IProjectRepository
     {
-        List<TblProjects> GetProjects(string ModuleID);
+        List<TblProjects> GetProjects(string ModuleID, string UserGUID);
 
         List<TblProjects> GetProjectsBySpaceID(string ModuleID,string SpaceID);
         
-        List<TblProjects> GetProjectsByUserID(long UserID, string ModuleID);
+        List<TblProjects> GetProjectsByUserID(string ModuleID, string UserGUID);
 
         TblProjects GetProjectByID(string ProjectID,string ModuleID);
-        List<TblCustomFields> GetCustomFieldsByProject(string ProjectID);
+        List<TblCustomFields> GetCustomFieldsByProject(string ProjectID, string UserGUID);
 
         TblProjects CreateProject(TblProjects Project, List<TblCustomFields> customFields);
 

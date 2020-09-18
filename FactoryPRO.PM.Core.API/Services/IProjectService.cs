@@ -14,15 +14,15 @@ namespace FactoryPRO.PM.Core.API.Services
     /// </summary>
     public interface IProjectService
     {
-        List<ProjectDTO> GetProjects(string ModuleID);
+        List<ProjectDTO> GetProjects(string ModuleID, string UserGUID);
 
         List<ProjectDTO> GetProjectsBySpaceID(string ModuleID, string SpaceID);
 
         ProjectDTO GetProjectByID(string ProjectID, string  ModuleID);
 
-        List<ProjectDTO> GetProjectsByUserID(long UserID, string ModuleID);
+        List<ProjectDTO> GetProjectsByUserID(string ModuleID, string UserGUID);
 
-        List<CustomFieldsDTO> GetCustomFieldsByProject(string ProjectID);
+        List<CustomFieldsDTO> GetCustomFieldsByProject(string ProjectID, string UserGUID);
         ProjectDTO CreateProject(FullProjectDTO fullProject);
 
         ProjectDTO UpdateProject(FullProjectDTO fullProject);

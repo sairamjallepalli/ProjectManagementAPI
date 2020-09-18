@@ -11,6 +11,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
             TblTasksHistory = new HashSet<TblTasksHistory>();
         }
 
+        public int Tsid { get; set; }
         public int TaskStatusId { get; set; }
         public string TaskStatusName { get; set; }
 

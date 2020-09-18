@@ -19,12 +19,12 @@ namespace FactoryPRO.PM.Core.API.Services
     {
         private IProjectRepository _projectRepository;
         private IMapper _mapper;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="projectRepository"></param>
-        /// <param name="mapper"></param>
-        /// <param name="response"></param>
+
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="projectRepository"></param>
+       /// <param name="mapper"></param>
         public ProjectService(IProjectRepository projectRepository, IMapper mapper)
         {
             _projectRepository = projectRepository;
@@ -91,15 +91,15 @@ namespace FactoryPRO.PM.Core.API.Services
             return lstOut;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="UserID"></param>
-        /// <param name="ModuleID"></param>
-        /// <returns></returns>
-        public List<ProjectDTO> GetProjectsByUserID(long UserID, string ModuleID)
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="ModuleID"></param>
+       /// <param name="UserGUID"></param>
+       /// <returns></returns>
+        public List<ProjectDTO> GetProjectsByUserID(string ModuleID, string UserGUID)
         {
-            List<TblProjects> Projects = (List<TblProjects>)_projectRepository.GetProjectsByUserID(UserID, ModuleID);
+            List<TblProjects> Projects = (List<TblProjects>)_projectRepository.GetProjectsByUserID(ModuleID,UserGUID);
             List<ProjectDTO> projects = new List<ProjectDTO>();
             foreach (TblProjects project in Projects)
             {
@@ -113,10 +113,11 @@ namespace FactoryPRO.PM.Core.API.Services
         /// 
         /// </summary>
         /// <param name="ModuleID"></param>
+        /// <param name="UserGUID"></param>
         /// <returns></returns>
-        public List<ProjectDTO> GetProjects(string ModuleID)
+        public List<ProjectDTO> GetProjects(string ModuleID, string UserGUID)
         {
-            List<TblProjects> Projects = (List<TblProjects>)_projectRepository.GetProjects(ModuleID);
+            List<TblProjects> Projects = (List<TblProjects>)_projectRepository.GetProjects(ModuleID, UserGUID);
             List<ProjectDTO> projects = new List<ProjectDTO>();
             foreach (TblProjects project in Projects)
             {
@@ -149,20 +150,20 @@ namespace FactoryPRO.PM.Core.API.Services
         /// </summary>
         /// <param name="ProjectID"></param>
         /// <returns></returns>
-        public List<CustomFieldsDTO> GetCustomFieldsByProject(string ProjectID)
+        public List<CustomFieldsDTO> GetCustomFieldsByProject(string ProjectID, string UserGUID)
         {
-            List<TblCustomFields> customFields = (List<TblCustomFields>)_projectRepository.GetCustomFieldsByProject(ProjectID);
+            List<TblCustomFields> customFields = (List<TblCustomFields>)_projectRepository.GetCustomFieldsByProject(ProjectID,UserGUID);
             List<CustomFieldsDTO> customFieldsDTO = CastObject<TblCustomFields, CustomFieldsDTO>(customFields);
             return customFieldsDTO;
         }
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Project"></param>
-        /// <returns></returns>
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="fullProject"></param>
+       /// <returns></returns>
         public ProjectDTO UpdateProject(FullProjectDTO fullProject)
         {
             var result = false;

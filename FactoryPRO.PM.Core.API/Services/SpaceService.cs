@@ -22,11 +22,14 @@ namespace FactoryPRO.PM.Core.API.Services
         private ITaskRepository _taskRepository;
         private IMapper _mapper;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="spaceRepository"></param>
-        /// <param name="mapper"></param>
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="spaceRepository"></param>
+       /// <param name="projectRepository"></param>
+       /// <param name="listRepository"></param>
+       /// <param name="taskRepository"></param>
+       /// <param name="mapper"></param>
         public SpaceService(ISpaceRepository spaceRepository, IProjectRepository projectRepository, IListRepository listRepository, ITaskRepository taskRepository, IMapper mapper)
         {
             _spaceRepository = spaceRepository;
@@ -100,18 +103,10 @@ namespace FactoryPRO.PM.Core.API.Services
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<SpaceDTO> GetSpaces(string ModuleID)
+        public List<SpaceDTO> GetSpaces(string ModuleID, string UserGUID)
         {
             List<TblSpace> Spaces = new List<TblSpace>();
-            Spaces = _spaceRepository.GetSpaces(ModuleID);
-            
-            //List<SpaceDTO> spaces = new List<SpaceDTO>();
-            //foreach (TblSpace space in Spaces)
-            //{
-            //    SpaceDTO userDTO = _mapper.Map<SpaceDTO>(space);
-            //    spaces.Add(userDTO);
-            //}
-         
+            Spaces = _spaceRepository.GetSpaces(ModuleID,UserGUID);
             List<SpaceDTO> spaces= CastObject<TblSpace, SpaceDTO>(Spaces);
             return spaces;
         }
@@ -120,10 +115,10 @@ namespace FactoryPRO.PM.Core.API.Services
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<SpaceTreeDTO> GetSpaceTree(string ModuleID)
+        public List<SpaceTreeDTO> GetSpaceTree(string ModuleID, string UserGUID)
         {
             List<TblSpace> Spaces = new List<TblSpace>();
-            Spaces = _spaceRepository.GetSpaces(ModuleID);
+            Spaces = _spaceRepository.GetSpaces(ModuleID,UserGUID);
 
             List<SpaceTreeDTO> spaces = CastObject<TblSpace, SpaceTreeDTO>(Spaces);
             foreach (var space in spaces)

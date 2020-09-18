@@ -50,12 +50,12 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             return _projectContext.TblProjects.Where(m=>m.ProjectId==ProjectID && m.ModuleId == ModuleID).FirstOrDefault();
         }
 
-        public List<TblProjects> GetProjectsByUserID(long UserID, string ModuleID)
+        public List<TblProjects> GetProjectsByUserID( string ModuleID, string UserGUID)
         {
             List<TblProjects> projects = new List<TblProjects>();
             try
             {
-                projects = _projectContext.TblProjects.Where(m => m.ModuleId == ModuleID && m.CreatedBy == UserID).ToList();
+                projects = _projectContext.TblProjects.Where(m => m.ModuleId == ModuleID && m.CreatedBy == UserGUID).ToList();
             }
             catch (Exception ex)
             {
@@ -64,12 +64,12 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             return projects;
         }
 
-        public List<TblCustomFields> GetCustomFieldsByProject(string ProjectID)
+        public List<TblCustomFields> GetCustomFieldsByProject(string ProjectID, string UserGUID)
         {
             List<TblCustomFields> CustomFields = new List<TblCustomFields>();
             try
             {
-                CustomFields = _projectContext.TblCustomFields.Where(m => m.ProjectId == ProjectID ).ToList();
+                CustomFields = _projectContext.TblCustomFields.Where(m => m.ProjectId == ProjectID && m.CreatedBy == UserGUID ).ToList();
             }
             catch (Exception ex)
             {
@@ -79,12 +79,12 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         }
 
 
-        public List<TblProjects> GetProjects(string ModuleID)
+        public List<TblProjects> GetProjects(string ModuleID, string UserGUID)
         {
             List<TblProjects> projects = new List<TblProjects>();
             try
             {
-                projects = _projectContext.TblProjects.Where(m => m.ModuleId == ModuleID).ToList();
+                projects = _projectContext.TblProjects.Where(m => m.ModuleId == ModuleID && m.CreatedBy == UserGUID).ToList();
             }
             catch (Exception ex)
             {

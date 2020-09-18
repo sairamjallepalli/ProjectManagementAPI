@@ -33,16 +33,16 @@ namespace FactoryPRO.PM.Core.API.Services
             _mapper = mapper;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="UserID"></param>
-        /// <param name="ModuleID"></param>
-        /// <returns></returns>
-        public TilesDTO GetTilesCount(int UserID,string ModuleID)
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="ModuleID"></param>
+      /// <param name="UserGUID"></param>
+      /// <returns></returns>
+        public TilesDTO GetTilesCount(string ModuleID, string UserGUID)
         {
-            List<TblTasks> Tasks = (List<TblTasks>)_taskRepository.GetTasksByUserID(UserID);
-            List<TblProjects> Projects = (List<TblProjects>)_projectRepository.GetProjectsByUserID(UserID, ModuleID);
+            List<TblTasks> Tasks = (List<TblTasks>)_taskRepository.GetTasksByUserID(UserGUID);
+            List<TblProjects> Projects = (List<TblProjects>)_projectRepository.GetProjectsByUserID( ModuleID,UserGUID);
             TilesDTO tilesDTO = new TilesDTO();
             tilesDTO.ActiveTasksCount = Tasks.Count();
             tilesDTO.OverDueTasksCount = Tasks.Where(x => x.DueDate < DateTime.Now).Count();

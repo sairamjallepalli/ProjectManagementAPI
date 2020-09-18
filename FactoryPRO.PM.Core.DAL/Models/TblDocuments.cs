@@ -9,7 +9,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public string DocumentId { get; set; }
         public string TaskId { get; set; }
         public string Files { get; set; }
-        public long? CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
 
         public virtual TblTasks Task { get; set; }

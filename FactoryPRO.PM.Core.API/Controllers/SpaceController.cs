@@ -39,7 +39,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
       /// <returns></returns>
        [Route("api/Spaces/GetSpaces")]
         [HttpGet]
-        public APIResponse GetSpaces(string ModuleID)
+        public APIResponse GetSpaces(string ModuleID,string UserGUID)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _spaceService.GetSpaces(ModuleID)
+                    returnObject = _spaceService.GetSpaces(ModuleID,UserGUID)
                 };
             }
             catch(Exception ex)
@@ -66,7 +66,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Spaces/GetSpaceTree")]
         [HttpGet]
-        public APIResponse GetSpaceTree(string ModuleID)
+        public APIResponse GetSpaceTree(string ModuleID, string UserGUID)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _spaceService.GetSpaceTree(ModuleID)
+                    returnObject = _spaceService.GetSpaceTree(ModuleID,UserGUID)
                 };
             }
             catch (Exception ex)
