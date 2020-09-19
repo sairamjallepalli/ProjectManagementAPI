@@ -379,6 +379,10 @@ namespace FactoryPRO.PM.Core.DAL.Models
 
                 entity.Property(e => e.TaskName).HasMaxLength(2000);
 
+                entity.Property(e => e.TaskParent)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Tid)
                     .HasColumnName("TID")
                     .ValueGeneratedOnAdd();

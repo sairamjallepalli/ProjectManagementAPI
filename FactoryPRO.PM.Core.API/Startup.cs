@@ -22,6 +22,7 @@ using FactoryPRO.PM.Core.DAL.Repository;
 using Serilog;
 using Serilog.Core;
 using FactoryPRO.PM.Core.DAL.Models;
+using System.Text.Json;
 
 namespace SolSem.PLM.Core.API
 {
@@ -65,6 +66,12 @@ namespace SolSem.PLM.Core.API
             services.AddAutoMapper(typeof(Startup));
            services.AddDbContext<ProjectContext>(item => item.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
            services.AddCors();
+
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            });
+
 
             //services.AddCors(options =>
             //{

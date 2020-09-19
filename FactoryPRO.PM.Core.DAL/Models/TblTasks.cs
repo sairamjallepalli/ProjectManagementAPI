@@ -18,7 +18,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public string TaskName { get; set; }
         public int? TaskStatus { get; set; }
         public string Assignee { get; set; }
-        public int? TaskParent { get; set; }
+        public string TaskParent { get; set; }
         public string IsRequired { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? DueDate { get; set; }
