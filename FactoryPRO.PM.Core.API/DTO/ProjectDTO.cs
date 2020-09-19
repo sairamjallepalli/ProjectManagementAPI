@@ -34,9 +34,9 @@ namespace FactoryPRO.PM.Core.API.DTO
         public DateTime? OriginalPlanDate { get; set; }
         public DateTime? OverridePlanDate { get; set; }
         public string Revision { get; set; }
-        public long? CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public long? UpdatedBy { get; set; }
+        public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
         public virtual SpaceDTO Space { get; set; }

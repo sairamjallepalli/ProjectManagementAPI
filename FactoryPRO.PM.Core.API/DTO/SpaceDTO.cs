@@ -9,7 +9,7 @@ namespace FactoryPRO.PM.Core.API.DTO
     {
         public string SpaceId { get; set; }
         public string SpaceName { get; set; }
-        public long? CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string ModuleID { get; set; }
     }

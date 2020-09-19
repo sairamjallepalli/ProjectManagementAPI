@@ -27,9 +27,9 @@ namespace FactoryPRO.PM.Core.API.DTO
         public decimal? EstimatedEfforts { get; set; }
         public decimal? CompletedEfforts { get; set; }
         public int? Priority { get; set; }
-        public long? CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public long? UpdatedBy { get; set; }
+        public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
         //public virtual TblList List { get; set; }
