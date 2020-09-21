@@ -59,12 +59,12 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         /// </summary>
         /// <param name="UserID"></param>
         /// <returns></returns>
-        public List<TblTasks> GetTasksByList(string ListID)
+        public List<TblTasks> GetTasksByList(string ListID, String UserGUID)
         {
             List<TblTasks> tasks = new List<TblTasks>();
             try
             {
-                tasks = _projectContext.TblTasks.Where(m => m.ListId == ListID).ToList();
+                tasks = _projectContext.TblTasks.Where(m => m.ListId == ListID && m.Assignee == UserGUID).ToList();
             }
             catch (Exception ex)
             {

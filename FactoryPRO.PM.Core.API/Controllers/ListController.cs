@@ -34,7 +34,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Lists/GetLists")]
         [HttpGet]
-        public APIResponse GetList(string ProjectID)
+        public APIResponse GetList(string ProjectID, String UserGUID)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _listtService.GetList(ProjectID)
+                    returnObject = _listtService.GetList(ProjectID, UserGUID)
                 };
             }
             catch (Exception ex)

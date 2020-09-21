@@ -10,7 +10,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
 {
    public interface IListRepository
     {
-        List<TblList> GetList(string ProjectID);
+        List<TblList> GetList(string ProjectID, String UserGUID);
 
         TblList GetListByID(string ListID,string ProjectID);
 

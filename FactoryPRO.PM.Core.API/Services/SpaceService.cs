@@ -128,13 +128,13 @@ namespace FactoryPRO.PM.Core.API.Services
                 space.ProjectDTO = lstProjectDTO;
                 foreach (var project in lstProjectDTO)
                 {
-                    List<TblList> lstPhases = _listRepository.GetList(project.ProjectId);
+                    List<TblList> lstPhases = _listRepository.GetList(project.ProjectId, UserGUID);
                     List<ListDTO> lstPhasesDTO = CastObject<TblList, ListDTO>(lstPhases);
 
                     project.listDTO = lstPhasesDTO;
                     foreach (var phase in lstPhasesDTO)
                     {
-                        List<TblTasks> lstTasks = _taskRepository.GetTasksByList(phase.ListId);
+                        List<TblTasks> lstTasks = _taskRepository.GetTasksByList(phase.ListId, UserGUID);
                         List<TaskDTO> lstTaskDTO = CastObject<TblTasks, TaskDTO>(lstTasks);
                         phase.tasksDTO = lstTaskDTO;
                     }
