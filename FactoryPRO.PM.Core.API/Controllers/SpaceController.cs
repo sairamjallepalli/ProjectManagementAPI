@@ -77,14 +77,14 @@ namespace FactoryPRO.PM.Core.API.Controllers
                     returnObject = _spaceService.GetSpaceTree(ModuleID,UserGUID)
                 };
             }
-            catch (Exception ex)
-            {
-                return new APIResponse
+                catch (Exception ex)
                 {
-                    returnCode = -1,
-                    returnMessage = ex.Message.ToString()
-                };
-            }
+                    return new APIResponse
+                    {
+                        returnCode = -1,
+                        returnMessage = ex.Message.ToString()
+                    };
+                }
         }
 
         /// <summary>

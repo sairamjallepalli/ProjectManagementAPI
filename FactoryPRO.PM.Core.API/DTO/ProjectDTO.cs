@@ -21,6 +21,7 @@ namespace FactoryPRO.PM.Core.API.DTO
         public int Pid { get; set; }
         public string ProjectId { get; set; }
         public string ProjectName { get; set; }
+        public string name { get; set; }
         public string SpaceId { get; set; }
         public string ModuleId { get; set; }
         public int? ProjectStatus { get; set; }
@@ -42,6 +43,9 @@ namespace FactoryPRO.PM.Core.API.DTO
         public virtual SpaceDTO Space { get; set; }
 
         public virtual CustomFieldsDTO customFieldsDTO { get; set; }
-        public virtual List<ListDTO> listDTO { get; set; }
+        public string type { get; set; }
+        //public virtual List<ListDTO> listDTO { get; set; }
+        public virtual List<ListDTO> children { get; set; }
+
     }
 }

@@ -74,9 +74,9 @@ namespace FactoryPRO.PM.Core.API.Services
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<ListDTO> GetList(string ProjectID, String UserGUID)
+        public List<ListDTO> GetList(string ProjectID)
         {
-            List<TblList> Lists = (List<TblList>)_listRepository.GetList(ProjectID, UserGUID);
+            List<TblList> Lists = (List<TblList>)_listRepository.GetList(ProjectID);
             List<ListDTO> listsDTO = new List<ListDTO>();
             foreach (TblList list in Lists)
             {

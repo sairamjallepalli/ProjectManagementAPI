@@ -18,8 +18,9 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string ProjectId { get; set; }
         public int? DepartmentId { get; set; }
         public string TaskName { get; set; }
+        public string name { get; set; }
         public int? TaskStatus { get; set; }
-        public int? Assignee { get; set; }
+        public string? Assignee { get; set; }
         public string TaskParent { get; set; }
         public string IsRequired { get; set; }
         public DateTime? StartDate { get; set; }

@@ -11,6 +11,7 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string ProjectId { get; set; }
         public string ModuleId { get; set; }
         public string ListName { get; set; }
+        public string name { get; set; }
         public int? ListOwnerId { get; set; }
         public string ListStatus { get; set; }
         public string Active { get; set; }
@@ -19,6 +20,7 @@ namespace FactoryPRO.PM.Core.API.DTO
         public DateTime? CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
+        public string type { get; set; }
         public List<TaskDTO> tasksDTO { get; set; }
 
     }

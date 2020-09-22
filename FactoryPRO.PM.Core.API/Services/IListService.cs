@@ -13,7 +13,7 @@ namespace FactoryPRO.PM.Core.API.Services
     /// </summary>
    public interface IListService
     {
-        List<ListDTO> GetList(string ProjectID, String UserGUID);
+        List<ListDTO> GetList(string ProjectID);
         ListDTO GetListByID(string ListID,string ProjectID);
         ListDTO CreateList(ListDTO Lists);
         ListDTO UpdateList(ListDTO Lists);
