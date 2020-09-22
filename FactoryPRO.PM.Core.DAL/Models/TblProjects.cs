@@ -35,6 +35,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
+        public virtual TblTaskStatus ProjectStatusNavigation { get; set; }
         public virtual TblSpace Space { get; set; }
         public virtual ICollection<TblCustomFields> TblCustomFields { get; set; }
         public virtual ICollection<TblList> TblList { get; set; }

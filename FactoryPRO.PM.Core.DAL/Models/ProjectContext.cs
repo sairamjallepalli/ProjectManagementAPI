@@ -169,10 +169,6 @@ namespace FactoryPRO.PM.Core.DAL.Models
 
                 entity.Property(e => e.ListOwnerId).HasColumnName("ListOwnerID");
 
-                entity.Property(e => e.ListStatus)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.ModuleId)
                     .HasColumnName("ModuleID")
                     .HasMaxLength(100)
@@ -188,6 +184,11 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.ListStatusNavigation)
+                    .WithMany(p => p.TblList)
+                    .HasForeignKey(d => d.ListStatus)
+                    .HasConstraintName("FK_tblList_tblTaskStatus_TaskStatusID");
 
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.TblList)
@@ -265,6 +266,11 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.UpdatedDate).HasColumnType("datetime");
+
+                entity.HasOne(d => d.ProjectStatusNavigation)
+                    .WithMany(p => p.TblProjects)
+                    .HasForeignKey(d => d.ProjectStatus)
+                    .HasConstraintName("FK_tblProjects_tblTaskStatus_TaskStatusID");
 
                 entity.HasOne(d => d.Space)
                     .WithMany(p => p.TblProjects)

@@ -13,7 +13,7 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string ListName { get; set; }
         public string name { get; set; }
         public int? ListOwnerId { get; set; }
-        public string ListStatus { get; set; }
+        public int ListStatus { get; set; }
         public string Active { get; set; }
         public int? ListSeq { get; set; }
         public string CreatedBy { get; set; }

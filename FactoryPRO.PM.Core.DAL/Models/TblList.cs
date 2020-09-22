@@ -17,7 +17,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public string ModuleId { get; set; }
         public string ListName { get; set; }
         public int? ListOwnerId { get; set; }
-        public string ListStatus { get; set; }
+        public int? ListStatus { get; set; }
         public string Active { get; set; }
         public int? ListSeq { get; set; }
         public string CreatedBy { get; set; }
@@ -25,6 +25,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
+        public virtual TblTaskStatus ListStatusNavigation { get; set; }
         public virtual TblProjects Project { get; set; }
         public virtual ICollection<TblTasks> TblTasks { get; set; }
         public virtual ICollection<TblTasksHistory> TblTasksHistory { get; set; }
