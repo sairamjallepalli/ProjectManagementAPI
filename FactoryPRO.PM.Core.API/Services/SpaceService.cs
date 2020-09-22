@@ -125,24 +125,31 @@ namespace FactoryPRO.PM.Core.API.Services
             {
                 List<TblProjects> lstProjects = _projectRepository.GetProjectsBySpaceID(ModuleID,space.SpaceId);
                 List<ProjectDTO> lstProjectDTO= CastObject<TblProjects, ProjectDTO>(lstProjects);
-                space.ProjectDTO = lstProjectDTO;
+                space.children = lstProjectDTO;
+                space.type = "space";
+                space.name = space.SpaceName;
                 foreach (var project in lstProjectDTO)
                 {
                     List<TblList> lstPhases = _listRepository.GetList(project.ProjectId);
                     List<ListDTO> lstPhasesDTO = CastObject<TblList, ListDTO>(lstPhases);
 
-                    project.listDTO = lstPhasesDTO;
+                    project.children = lstPhasesDTO;
+                    project.type = "project";
+                    project.name = project.ProjectName;
+                    
                     foreach (var phase in lstPhasesDTO)
                     {
-                        List<TblTasks> lstTasks = _taskRepository.GetTasksByList(phase.ListId);
+                        List<TblTasks> lstTasks = _taskRepository.GetTasksByList(phase.ListId, UserGUID);
                         List<TaskDTO> lstTaskDTO = CastObject<TblTasks, TaskDTO>(lstTasks);
                         phase.tasksDTO = lstTaskDTO;
+                        phase.type = "list";
+                        phase.name = phase.ListName;
                     }
                 }
 
              }
 
-                return spaces;
+             return spaces;
         }
 
         /// <summary>

@@ -10,7 +10,7 @@ namespace FactoryPRO.PM.Core.API.Services
     public interface ITaskService
     {
         List<TaskDTO> GetTasksByUserID(string UserGUID);
-        List<TaskDTO> GetTasksByList(string ListID);
+        List<TaskDTO> GetTasksByList(string ListID, String UserGUID);
         List<TaskDTO> GetTasksByProject(string ProjectID);
         TaskDTO GetTasksByID(string TaskID);
         TaskDTO CreateTask(TaskDTO Task);
