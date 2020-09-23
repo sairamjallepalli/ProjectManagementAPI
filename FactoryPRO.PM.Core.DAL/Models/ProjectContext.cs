@@ -169,6 +169,10 @@ namespace FactoryPRO.PM.Core.DAL.Models
 
                 entity.Property(e => e.ListOwnerId).HasColumnName("ListOwnerID");
 
+                entity.Property(e => e.ListParent)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.ModuleId)
                     .HasColumnName("ModuleID")
                     .HasMaxLength(100)

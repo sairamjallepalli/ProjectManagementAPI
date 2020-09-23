@@ -24,6 +24,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public DateTime? CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
+        public string ListParent { get; set; }
 
         public virtual TblTaskStatus ListStatusNavigation { get; set; }
         public virtual TblProjects Project { get; set; }

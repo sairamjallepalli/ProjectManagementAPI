@@ -16,6 +16,7 @@ namespace FactoryPRO.PM.Core.API.DTO
         public int ListStatus { get; set; }
         public string Active { get; set; }
         public int? ListSeq { get; set; }
+        public string ListParent { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
