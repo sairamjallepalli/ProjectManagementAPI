@@ -48,6 +48,7 @@ namespace FactoryPRO.PM.Core.API.Services
         {
             TblSpace space = _mapper.Map<TblSpace>(Space);
             space.SpaceId = Guid.NewGuid().ToString();
+            space.CreatedDate = DateTime.Now;
             space =  _spaceRepository.CreateSpace(space);
 
             SpaceDTO spacedto = _mapper.Map<SpaceDTO>(space);
