@@ -94,7 +94,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpPost]
         public APIResponse CreateList(ListDTO lists)
         {
-            lists.CreatedDate = DateTime.UtcNow;
+
 
             try
             {

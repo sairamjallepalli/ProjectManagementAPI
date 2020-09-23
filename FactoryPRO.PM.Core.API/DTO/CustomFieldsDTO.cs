@@ -14,7 +14,7 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string FieldName { get; set; }
         public string FieldValue { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
+        public string? CreatedDate { get; set; }
 
 
     }

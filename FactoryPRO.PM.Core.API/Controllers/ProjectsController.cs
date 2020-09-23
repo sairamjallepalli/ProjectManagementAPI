@@ -185,7 +185,6 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpPost]
         public APIResponse CreateProject(FullProjectDTO project)
         {
-            project.projectDTO.CreatedDate = DateTime.UtcNow;
             try
             {
                 return new APIResponse
@@ -214,7 +213,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpPost]
         public APIResponse UpdateProject(FullProjectDTO project)
         {
-            project.projectDTO.UpdatedDate = DateTime.UtcNow;
+            
 
             try
             {

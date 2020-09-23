@@ -39,7 +39,8 @@ namespace FactoryPRO.PM.Core.API.Services
         public ProjectDTO CreateProject(FullProjectDTO fullProject)
         {
             TblProjects projects = _mapper.Map<TblProjects>(fullProject.projectDTO);
-
+            projects.CreatedDate = DateTime.UtcNow;
+            projects.ProjectId = Guid.NewGuid().ToString();
             List<TblCustomFields> customFields = CastObject<CustomFieldsDTO, TblCustomFields>(fullProject.customFieldsDTO);
             projects = _projectRepository.CreateProject(projects, customFields);
             ProjectDTO projectdto = _mapper.Map<ProjectDTO>(projects);
@@ -168,6 +169,7 @@ namespace FactoryPRO.PM.Core.API.Services
         {
             var result = false;
             TblProjects projects = _mapper.Map<TblProjects>(fullProject.projectDTO);
+            projects.UpdatedDate = DateTime.UtcNow;
             TblCustomFields customFields = _mapper.Map<TblCustomFields>(fullProject.customFieldsDTO);
             projects = _projectRepository.UpdateProject(projects,customFields);
             ProjectDTO projectdto = _mapper.Map<ProjectDTO>(projects);
