@@ -18,5 +18,6 @@ namespace FactoryPRO.PM.Core.API.Services
         ListDTO CreateList(ListDTO Lists);
         ListDTO UpdateList(ListDTO Lists);
         bool DeleteList(ListDTO Lists);
+        bool UpdateListStatusByID(string ListID);
     }
 }

@@ -19,5 +19,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         TblList UpdateList(TblList Lists);
 
         bool DeleteList(TblList Lists);
+
+        bool UpdateListStatusByID(string ListID);
     }
 }

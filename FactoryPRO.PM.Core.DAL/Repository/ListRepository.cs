@@ -47,6 +47,24 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             return _projectContext.TblList.Where(m => m.ListId == ListID && m.ProjectId == ProjectID).FirstOrDefault();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ListID"></param>
+        /// <returns></returns>
+        public bool UpdateListStatusByID(string ListID)
+        {
+            var _listobj = _projectContext.TblList.Where(m => m.ListId == ListID ).FirstOrDefault();
+
+            if (_listobj != null)
+            {
+                _listobj.ListStatus  = 4;
+               // _projectContext.Update(_listobj).Property(x => x.Lid).IsModified = false;
+                _projectContext.SaveChanges();
+            }
+            return true;
+        }
+
         public TblList UpdateList(TblList list)
         {
             var _Projectobj = _projectContext.TblList.Where(m => m.ListId == list.ListId && m.ProjectId ==list.ProjectId).FirstOrDefault();

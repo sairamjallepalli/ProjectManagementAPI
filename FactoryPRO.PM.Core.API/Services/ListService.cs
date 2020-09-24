@@ -17,15 +17,18 @@ namespace FactoryPRO.PM.Core.API.Services
     public class ListService : IListService
     {
         private IListRepository _listRepository;
+        private ITaskRepository _taskRepository;
         private IMapper _mapper;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="listRepository"></param>
-        /// <param name="mapper"></param>
-        public ListService(IListRepository listRepository, IMapper mapper)
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="listRepository"></param>
+       /// <param name="mapper"></param>
+       /// <param name="taskRepository"></param>
+        public ListService(IListRepository listRepository, IMapper mapper,ITaskRepository taskRepository)
         {
             _listRepository = listRepository;
+            _taskRepository = taskRepository;
             _mapper = mapper;
         }
 
@@ -100,5 +103,44 @@ namespace FactoryPRO.PM.Core.API.Services
             ListDTO listdto = _mapper.Map<ListDTO>(list);
             return listdto;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ListID"></param>
+        /// <returns></returns>
+        public bool UpdateListStatusByID(string ListID)
+        {
+            List<TblTasks> Tasks = (List<TblTasks>)_taskRepository.GetTasksByList(ListID);
+            List<TaskDTO> lstTaskDTO = CastObject<TblTasks, TaskDTO>(Tasks);
+
+            var count = lstTaskDTO.Where(m => m.TaskStatus != 4).Count();
+            if (count > 0)
+                return false;
+            else
+            {
+               return  _listRepository.UpdateListStatusByID(ListID);
+            }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TIn"></typeparam>
+        /// <typeparam name="TOut"></typeparam>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public List<TOut> CastObject<TIn, TOut>(List<TIn> input)
+        {
+            List<TOut> lstOut = new List<TOut>();
+            foreach (TIn tIn in input)
+            {
+                TOut tOut = _mapper.Map<TOut>(tIn);
+                lstOut.Add(tOut);
+            }
+            return lstOut;
+        }
+
     }
 }

@@ -140,7 +140,7 @@ namespace FactoryPRO.PM.Core.API.Services
                     
                     foreach (var phase in lstPhasesDTO)
                     {
-                        List<TblTasks> lstTasks = _taskRepository.GetTasksByList(phase.ListId, UserGUID);
+                        List<TblTasks> lstTasks = _taskRepository.GetTasksByList(phase.ListId);
                         List<TaskDTO> lstTaskDTO = CastObject<TblTasks, TaskDTO>(lstTasks);
                         phase.tasksDTO = lstTaskDTO;
                         phase.type = "list";

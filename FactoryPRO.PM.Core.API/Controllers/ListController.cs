@@ -156,5 +156,29 @@ namespace FactoryPRO.PM.Core.API.Controllers
         {
             return _listtService.DeleteList(lists);
         }
+
+        // To close the list if all tasks are closed.
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/Lists/UpdateListStatusByID")]
+        [HttpGet]
+        public bool UpdateListStatusByID(string ListID)
+        {
+            bool result = false;
+            try
+            {
+
+                result = _listtService.UpdateListStatusByID(ListID);
+               
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return result;
+        }
+
     }
 }

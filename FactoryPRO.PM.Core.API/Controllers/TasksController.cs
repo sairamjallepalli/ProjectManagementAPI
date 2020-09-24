@@ -59,7 +59,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Tasks/GetTasksByList")]
         [HttpGet]
-        public APIResponse GetTasksByList(string ListID, String UserGUID)
+        public APIResponse GetTasksByList(string ListID)
         {
 
             try
@@ -68,7 +68,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _taskService.GetTasksByList(ListID, UserGUID)
+                    returnObject = _taskService.GetTasksByList(ListID)
                 };
             }
             catch (Exception ex)
