@@ -18,9 +18,9 @@ namespace FactoryPRO.PM.Core.API.DTO
         public int? ListSeq { get; set; }
         public string ListParent { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
+        public string? CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
-        public DateTime? UpdatedDate { get; set; }
+        public string? UpdatedDate { get; set; }
         public string type { get; set; }
         public List<TaskDTO> tasksDTO { get; set; }
 

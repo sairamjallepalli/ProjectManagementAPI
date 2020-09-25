@@ -105,6 +105,7 @@ namespace FactoryPRO.PM.Core.API.Services
         {
             TblTasks task = _mapper.Map<TblTasks>(Task);
             task.TaskId = Guid.NewGuid().ToString();
+            task.CreatedDate = DateTime.UtcNow;
             task = _taskRepository.CreateTask(task);
             TaskDTO Taskdto = new TaskDTO();
             Taskdto = _mapper.Map<TaskDTO>(task);
@@ -119,6 +120,7 @@ namespace FactoryPRO.PM.Core.API.Services
         public TaskDTO UpdateTask(TaskDTO Task)
         {
             TblTasks task = _mapper.Map<TblTasks>(Task);
+            task.UpdatedDate = DateTime.UtcNow;
             task = _taskRepository.UpdateTask(task);
 
             TaskDTO Taskdto = new TaskDTO();
