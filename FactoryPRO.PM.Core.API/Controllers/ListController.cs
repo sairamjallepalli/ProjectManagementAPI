@@ -125,7 +125,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpPost]
         public APIResponse UpdateList(ListDTO lists)
         {
-            lists.UpdatedDate  = DateTime.UtcNow;
+
             try
             {
                 return new APIResponse

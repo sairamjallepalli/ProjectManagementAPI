@@ -98,6 +98,7 @@ namespace FactoryPRO.PM.Core.API.Services
         public ListDTO UpdateList(ListDTO Lists)
         {
             TblList list = _mapper.Map<TblList>(Lists);
+            list.UpdatedDate = DateTime.UtcNow;
             list = _listRepository.UpdateList(list);
 
             ListDTO listdto = _mapper.Map<ListDTO>(list);

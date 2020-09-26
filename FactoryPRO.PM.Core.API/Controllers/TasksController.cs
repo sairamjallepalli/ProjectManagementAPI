@@ -119,7 +119,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpPost]
         public APIResponse CreateTask(TaskDTO Task)
         {
-            Task.CreatedDate = DateTime.UtcNow;
+            
             try
             {
                 return new APIResponse
@@ -148,7 +148,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         [HttpPost]
         public APIResponse UpdateTask(TaskDTO Task)
         {
-            Task.UpdatedDate = DateTime.UtcNow;
+            
 
             try
             {
