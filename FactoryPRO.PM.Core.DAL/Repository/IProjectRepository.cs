@@ -14,7 +14,7 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         
         List<TblProjects> GetProjectsByUserID(string ModuleID, string UserGUID);
 
-        TblProjects GetProjectByID(string ProjectID,string ModuleID);
+        TblProjects GetProjectByID(string ProjectID);
         List<TblCustomFields> GetCustomFieldsByProject(string ProjectID, string UserGUID);
 
         TblProjects CreateProject(TblProjects Project, List<TblCustomFields> customFields);
@@ -22,5 +22,6 @@ namespace FactoryPRO.PM.Core.DAL.Repository
         TblProjects UpdateProject(TblProjects Project, TblCustomFields customFields);
 
         bool DeleteProject(TblProjects Project);
+        bool UpdateProjectStatusByID(string ProjectID);
     }
 }

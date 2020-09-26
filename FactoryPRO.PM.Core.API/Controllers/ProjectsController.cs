@@ -95,7 +95,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
         /// <returns></returns>
         [Route("api/Projects/GetProjectByID")]
         [HttpGet]
-        public APIResponse GetProjectByID(string ProjectID,string ModuleID)
+        public APIResponse GetProjectByID(string ProjectID)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace FactoryPRO.PM.Core.API.Controllers
                 {
                     returnCode = 0,
                     returnMessage = "Success",
-                    returnObject = _projectService.GetProjectByID(ProjectID, ModuleID)
+                    returnObject = _projectService.GetProjectByID(ProjectID)
                 };
             }
             catch (Exception ex)
@@ -247,6 +247,26 @@ namespace FactoryPRO.PM.Core.API.Controllers
             return _projectService.DeleteProject(project);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <returns></returns>
+        [Route("api/Projects/UpdateProjectStatusByID")]
+        [HttpGet]
+        public bool UpdateProjectStatusByID(string ProjectID)
+        {
+            bool result = false;
+            try
+            {
+                result = _projectService.UpdateProjectStatusByID(ProjectID);
 
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return result;
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace FactoryPRO.PM.Core.API.Services
 
         List<ProjectDTO> GetProjectsBySpaceID(string ModuleID, string SpaceID);
 
-        ProjectDTO GetProjectByID(string ProjectID, string  ModuleID);
+        ProjectDTO GetProjectByID(string ProjectID);
 
         List<ProjectDTO> GetProjectsByUserID(string ModuleID, string UserGUID);
 
@@ -28,5 +28,7 @@ namespace FactoryPRO.PM.Core.API.Services
         ProjectDTO UpdateProject(FullProjectDTO fullProject);
 
         bool DeleteProject(ProjectDTO Project);
+
+        bool UpdateProjectStatusByID(string ProjectID);
     }
 }

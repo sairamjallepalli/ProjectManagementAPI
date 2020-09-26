@@ -131,7 +131,7 @@ namespace FactoryPRO.PM.Core.API.Services
                 space.name = space.SpaceName;
                 foreach (var project in lstProjectDTO)
                 {
-                    List<TblList> lstPhases = _listRepository.GetList(project.ProjectId);
+                    List<TblList> lstPhases = _listRepository.GetLists(project.ProjectId);
                     List<ListDTO> lstPhasesDTO = CastObject<TblList, ListDTO>(lstPhases);
 
                     project.children = lstPhasesDTO;

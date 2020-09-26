@@ -45,9 +45,9 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             return true;
         }
 
-        public TblProjects GetProjectByID(string ProjectID,string ModuleID)
+        public TblProjects GetProjectByID(string ProjectID)
         {
-            return _projectContext.TblProjects.Where(m=>m.ProjectId==ProjectID && m.ModuleId == ModuleID).FirstOrDefault();
+            return _projectContext.TblProjects.Where(m=>m.ProjectId==ProjectID).FirstOrDefault();
         }
 
         public List<TblProjects> GetProjectsByUserID( string ModuleID, string UserGUID)
@@ -148,5 +148,20 @@ namespace FactoryPRO.PM.Core.DAL.Repository
             }
                 return Projects;
         }
+
+
+        public bool UpdateProjectStatusByID(string ProjectID)
+        {
+            var _listobj = _projectContext.TblProjects.Where(m => m.ProjectId == ProjectID).FirstOrDefault();
+
+            if (_listobj != null)
+            {
+                _listobj.ProjectStatus = 4;
+                // _projectContext.Update(_listobj).Property(x => x.Lid).IsModified = false;
+                _projectContext.SaveChanges();
+            }
+            return true;
+        }
+
     }
 }

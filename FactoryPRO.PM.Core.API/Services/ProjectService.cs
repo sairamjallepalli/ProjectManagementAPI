@@ -18,6 +18,8 @@ namespace FactoryPRO.PM.Core.API.Services
     public class ProjectService : IProjectService 
     {
         private IProjectRepository _projectRepository;
+        private ITaskRepository _tasktRepository;
+        private IListRepository  _listRepository;
         private IMapper _mapper;
 
        /// <summary>
@@ -25,9 +27,13 @@ namespace FactoryPRO.PM.Core.API.Services
        /// </summary>
        /// <param name="projectRepository"></param>
        /// <param name="mapper"></param>
-        public ProjectService(IProjectRepository projectRepository, IMapper mapper)
+       /// <param name="tasktRepository"></param>
+       /// <param name="listRepository"></param>
+        public ProjectService(IProjectRepository projectRepository, IMapper mapper, ITaskRepository tasktRepository, IListRepository listRepository)
         {
             _projectRepository = projectRepository;
+            _tasktRepository = tasktRepository;
+            _listRepository = listRepository;
             _mapper = mapper;
         }
 
@@ -67,9 +73,9 @@ namespace FactoryPRO.PM.Core.API.Services
         /// <param name="ProjectID"></param>
         /// <param name="ModuleID"></param>
         /// <returns></returns>
-        public ProjectDTO GetProjectByID(string ProjectID, string ModuleID)
+        public ProjectDTO GetProjectByID(string ProjectID)
         {
-            TblProjects projects = _projectRepository.GetProjectByID(ProjectID,ModuleID);
+            TblProjects projects = _projectRepository.GetProjectByID(ProjectID);
             ProjectDTO space = _mapper.Map<ProjectDTO>(projects);
             return space;
         }
@@ -150,6 +156,7 @@ namespace FactoryPRO.PM.Core.API.Services
         /// 
         /// </summary>
         /// <param name="ProjectID"></param>
+        /// <param name="UserGUID"></param>
         /// <returns></returns>
         public List<CustomFieldsDTO> GetCustomFieldsByProject(string ProjectID, string UserGUID)
         {
@@ -174,6 +181,33 @@ namespace FactoryPRO.PM.Core.API.Services
             projects = _projectRepository.UpdateProject(projects,customFields);
             ProjectDTO projectdto = _mapper.Map<ProjectDTO>(projects);
             return projectdto;
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ProjectID"></param>
+        /// <returns></returns>
+        public bool UpdateProjectStatusByID(string ProjectID)
+        {
+            List<TblList> lists = (List<TblList>)_listRepository.GetLists(ProjectID);
+            List<ListDTO> lstDTO = CastObject<TblList, ListDTO>(lists);
+            var lstCount = lstDTO.Where(m => m.ListStatus != 4).Count();
+            if (lstCount > 0)
+                return false;
+
+            foreach (ListDTO lst in lstDTO )
+            {
+                List<TblTasks> Tasks = (List<TblTasks>)_tasktRepository.GetTasksByList(lst.ListId);
+                List<TaskDTO> lstTaskDTO = CastObject<TblTasks, TaskDTO>(Tasks);
+
+                var taskCount = lstTaskDTO.Where(m => m.TaskStatus != 4).Count();
+                if (taskCount > 0)
+                    return false;
+            }
+         
+                return _projectRepository.UpdateProjectStatusByID(ProjectID);
 
         }
 
