@@ -130,7 +130,7 @@ namespace SolSem.PLM.Core.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseSerilogRequestLogging();
             app.UseRouting();
           //  app.UseSerilogRequestLogging();
 
