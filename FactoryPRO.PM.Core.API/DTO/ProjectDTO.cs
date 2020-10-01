@@ -46,6 +46,7 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string type { get; set; }
         //public virtual List<ListDTO> listDTO { get; set; }
         public virtual List<ListDTO> children { get; set; }
+        public string ProductId { get; set; }
 
     }
 }

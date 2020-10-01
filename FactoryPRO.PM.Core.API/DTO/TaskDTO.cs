@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,9 +34,34 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string? CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public string? UpdatedDate { get; set; }
+        public string ProductTaskId { get; set; }
+        public virtual List<TaskFilesDTO> TaskFiles { get; set; }
 
         //public virtual TblList List { get; set; }
         //public virtual TblTaskStatus TaskStatusNavigation { get; set; }
         //public virtual ICollection<TblTasksHistory> TblTasksHistory { get; set; }
+    }
+
+    public class TaskFilesDTO
+    {
+        public int ProductID { get; set; }
+        public System.Guid FileGuid { get; set; }
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
+
+        public string ProjectName { get; set; }
+        public string IsExists { get; set; }
+        public int ModuleID { get; set; }
+        public int DepartmentID { get; set; }
+        public IFormFile NewFileStream { get; set; }
+
+        public System.Guid ActionBy { get; set; }
+        [DisplayFormat(DataFormatString = Constants.DateOnlyFormat)]
+        public DateTime ActionDate { get; set; }
+    }
+
+    public static class Constants
+    {
+        public const string DateOnlyFormat = "{0:MM/dd/yyyy}";
     }
 }

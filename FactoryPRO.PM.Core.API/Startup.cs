@@ -57,7 +57,8 @@ namespace SolSem.PLM.Core.API
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IListService, ListService>();
             services.AddScoped<IListRepository, ListRepository>();
-          //  services.AddSingleton<Logger, LoggerConfiguration>();
+            services.AddScoped<IDocumentRepository, DocumentRepository>();
+            //  services.AddSingleton<Logger, LoggerConfiguration>();
             services.AddScoped<APIResponse>();
             services.AddScoped<ITaskService, TaskService>();
             services.AddScoped<ITaskRepository, TaskRepository>();

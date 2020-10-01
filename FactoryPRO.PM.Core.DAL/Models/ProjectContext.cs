@@ -178,6 +178,11 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.ProductPhaseId)
+                    .HasColumnName("ProductPhaseID")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.ProjectId)
                     .HasColumnName("ProjectID")
                     .HasMaxLength(100)
@@ -244,6 +249,11 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .HasColumnName("PID")
                     .ValueGeneratedOnAdd();
 
+                entity.Property(e => e.ProductId)
+                    .HasColumnName("ProductID")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.ProjectName)
                     .IsRequired()
                     .HasMaxLength(250);
@@ -305,6 +315,11 @@ namespace FactoryPRO.PM.Core.DAL.Models
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasDefaultValueSql("('')");
+
+                entity.Property(e => e.ProductSpaceId)
+                    .HasColumnName("ProductSpaceID")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Sid)
                     .HasColumnName("SID")
@@ -377,6 +392,11 @@ namespace FactoryPRO.PM.Core.DAL.Models
 
                 entity.Property(e => e.ListId)
                     .HasColumnName("ListID")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ProductTaskId)
+                    .HasColumnName("ProductTaskID")
                     .HasMaxLength(100)
                     .IsUnicode(false);
 

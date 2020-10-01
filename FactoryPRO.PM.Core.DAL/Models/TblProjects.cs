@@ -34,6 +34,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public DateTime? CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
+        public string ProductId { get; set; }
 
         public virtual TblTaskStatus ProjectStatusNavigation { get; set; }
         public virtual TblSpace Space { get; set; }
