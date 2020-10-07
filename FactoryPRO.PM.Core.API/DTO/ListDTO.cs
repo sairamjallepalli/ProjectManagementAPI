@@ -24,5 +24,7 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string type { get; set; }
         public List<TaskDTO> tasksDTO { get; set; }
 
+        public string ProductPhaseId { get; set; }
+
     }
 }

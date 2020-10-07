@@ -18,6 +18,7 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public string ModuleId { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
+        public string ProductSpaceId { get; set; }
 
         public virtual ICollection<TblProjects> TblProjects { get; set; }
     }
