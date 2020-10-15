@@ -44,9 +44,24 @@ namespace FactoryPRO.PM.Core.API.Services
             List<TblTasks> Tasks = (List<TblTasks>)_taskRepository.GetTasksByUserID(UserGUID);
             List<TblProjects> Projects = (List<TblProjects>)_projectRepository.GetProjectsByUserID( ModuleID,UserGUID);
             TilesDTO tilesDTO = new TilesDTO();
-            tilesDTO.ActiveTasksCount = Tasks.Count();
+
+            // For Tiles
+            tilesDTO.ActiveProjectsCount = Projects.Where(x => x.ProjectStatus == 2).ToList().Count();  // In Progress Projects
+            tilesDTO.PendingProjectsCount = Projects.Where(x => x.ProjectStatus == 3).ToList().Count(); // In Hold (Pending) Projects
+
+            tilesDTO.TotalTasksCount = Tasks.Count();
+            tilesDTO.CompletedTasksCount = Tasks.Where(x => x.TaskStatus == 4).ToList().Count();        // Completed Tasks
+
+            tilesDTO.OverDueProjectsCount = Projects.Where(x => x.TargetDate < DateTime.Now).Count();
             tilesDTO.OverDueTasksCount = Tasks.Where(x => x.DueDate < DateTime.Now).Count();
-            tilesDTO.TotalProjectsCount = Projects.Count();
+
+            // For Pie Chart
+            tilesDTO.NewProjectsCount = Projects.Where(x => x.ProjectStatus == 1).ToList().Count();  // New Projects
+            tilesDTO.HoldProjectsCount = Projects.Where(x => x.ProjectStatus == 3).ToList().Count();  // Hold Projects
+                //ActiveProjectsCount
+            tilesDTO.CompletedProjectsCount = Projects.Where(x => x.ProjectStatus == 4).ToList().Count();  // Completed Projects
+            tilesDTO.RejectedProjectsCount = Projects.Where(x => x.ProjectStatus == 5).ToList().Count();  // Rejected Projects
+
             return tilesDTO;
         }
     }
