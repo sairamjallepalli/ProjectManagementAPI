@@ -30,7 +30,9 @@ namespace FactoryPRO.PM.Core.DAL.Models
         public string UpdatedBy { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public string ProductTaskId { get; set; }
-
+        public bool? criticalpart { get; set; }
+        public string? notes { get; set; }
+        public int? predecessor { get; set; }
         public virtual TblList List { get; set; }
         public virtual TblProjects Project { get; set; }
         public virtual TblTaskStatus TaskStatusNavigation { get; set; }

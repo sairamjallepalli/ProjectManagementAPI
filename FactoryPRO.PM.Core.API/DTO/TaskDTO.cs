@@ -35,6 +35,9 @@ namespace FactoryPRO.PM.Core.API.DTO
         public string UpdatedBy { get; set; }
         public string? UpdatedDate { get; set; }
         public string ProductTaskId { get; set; }
+        public bool? criticalpart { get; set; }
+        public string? notes { get; set; }
+        public int? predecessor { get; set; }
         public virtual List<TaskFilesDTO> TaskFiles { get; set; }
 
         //public virtual TblList List { get; set; }
