@@ -26,7 +26,9 @@ namespace FactoryPRO.PM.Core.API.Helpers
             CreateMap<SpaceTreeDTO, TblSpace>();
             CreateMap<TblProjects, ProjectDTO>();
             CreateMap<ProjectDTO, TblProjects>();
-            CreateMap<TblList, ListDTO>();
+            CreateMap<TblList, ListDTO>()
+                .ForMember(destination => destination.tasksDTO,
+                options => options.MapFrom(source => source.TblTasks));
             CreateMap<ListDTO, TblList>();
             CreateMap<TblCustomFields, CustomFieldsDTO>();
             CreateMap<CustomFieldsDTO, TblCustomFields>();

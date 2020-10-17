@@ -39,7 +39,9 @@ namespace FactoryPRO.PM.Core.DAL.Repository
 
         public List<TblList> GetLists(string ProjectID)
         {
-            return _projectContext.TblList.Where(m => m.ProjectId == ProjectID ).ToList();
+            return _projectContext.TblList.Where(m => m.ProjectId == ProjectID )
+                .Include(x => x.TblTasks)
+                .ToList();
         }
 
         public TblList GetListByID(string ListID,string ProjectID)
